@@ -1,0 +1,132 @@
+/* 1. VARIABLES & THEMING */
+:root {
+    --bg-color: #f6f8fa;
+    --main-bg: #ffffff;
+    --card-bg: #ffffff;
+    --header-footer-bg: #ffffff;
+    --text-main: #24292e;
+    --text-muted: #586069;
+    --primary-blue: #0366d6;
+    --success-green: #28a745;
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* 2. DARK MODE (Activated by JS toggle) */
+body.dark-mode {
+    --bg-color: #0d1117;
+    --main-bg: #161b22;
+    --card-bg: #161b22;
+    --header-footer-bg: #161b22;
+    --text-main: #c9d1d9;
+    --text-muted: #8b949e;
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* 3. BASE STYLES */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 4. HEADER & FOOTER (Flexbox) */
+header, footer {
+    background-color: var(--header-footer-bg);
+    padding: 15px 30px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+header { position: sticky; top: 0; }
+footer { position: sticky; bottom: 0; border-top: 1px solid var(--text-muted); }
+
+.controls-container { display: flex; gap: 12px; flex: 1; justify-content: center; max-width: 600px; }
+
+input, select {
+    padding: 8px 15px;
+    border: 1px solid var(--text-muted);
+    border-radius: 6px;
+    background-color: var(--card-bg);
+    color: var(--text-main);
+}
+
+.theme-toggle {
+    background: var(--card-bg); border: 1px solid var(--text-muted); color: var(--text-main);
+    border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* 5. GRID LAYOUT */
+main { flex: 1; padding: 30px; max-width: 1400px; margin: 0 auto; width: 100%; }
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    gap: 25px;
+    justify-content: center;
+}
+
+/* 6. PRODUCT CARDS (UI Requirements) */
+.product-card {
+    background: var(--card-bg);
+    border-radius: 12px; /* Requirement: Border Radius */
+    width: 300px; /* Requirement: 300px width */
+    height: 480px; 
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: var(--shadow-card); /* Requirement: Box Shadow */
+}
+
+.product-card:hover { 
+    transform: translateY(-5px); /* Requirement: Hover effect */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+}
+
+.image-container {
+    height: 180px; display: flex; justify-content: center; align-items: center;
+    margin-bottom: 15px; background-color: #fff; border-radius: 8px; overflow: hidden;
+}
+
+.product-image { max-height: 90%; max-width: 90%; object-fit: contain; }
+
+.product-title { font-size: 15px; font-weight: 600; height: 40px; overflow: hidden; margin-bottom: 5px; }
+
+.product-price { font-size: 20px; font-weight: 700; color: var(--success-green); margin-bottom: 8px; }
+
+.product-description { font-size: 13px; color: var(--text-muted); height: 55px; overflow: hidden; }
+
+/* 7. BUTTONS */
+.card-buttons { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+
+.btn { padding: 10px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.btn:active { transform: scale(0.96); }
+.btn-view { background: var(--primary-blue); color: white; }
+.btn-add { background: var(--success-green); color: white; }
+
+.footer-right { display: flex; align-items: center; gap: 15px; }
+.btn-clear { background: none; border: 1px solid var(--text-muted); color: var(--text-muted); padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+.btn-clear:hover { color: #cb2431; border-color: #cb2431; }
+
+/* 8. STATUS & MODAL */
+.status-message { text-align: center; margin-top: 50px; font-size: 18px; grid-column: 1/-1; }
+.error { color: #cb2431; font-weight: bold; }
+.hidden { display: none !important; }
+
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 200; backdrop-filter: blur(2px); }
+.modal-content { background: var(--card-bg); padding: 30px; border-radius: 12px; width: 90%; max-width: 500px; position: relative; text-align: center; border: 1px solid var(--text-muted); }
+.close-button { position: absolute; top: 10px; right: 20px; font-size: 28px; cursor: pointer; color: var(--text-muted); }
+.modal-details img { max-height: 200px; object-fit: contain; background: #fff; padding: 10px; border-radius: 8px; margin-bottom: 15px; }

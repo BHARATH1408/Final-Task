@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FakeStore</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <h1>🛍️ FakeStore</h1>
+        </div>
+        <div class="controls-container">
+            <input type="text" id="searchInput" placeholder="Search products by title...">
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+            </select>
+        </div>
+        <div class="header-right">
+             <button class="theme-toggle" id="themeBtn">🌙</button>
+        </div>
+    </header>
+
+    <main>
+        <div id="loadingState" class="status-message">⏳ Loading products...</div>
+        <div id="errorMessage" class="status-message error hidden">Failed to load data</div>
+
+        <section class="catalog-section">
+            <div id="productGrid" class="product-grid"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-left">
+            <select id="sortSelect">
+                <option value="default">Sort By Price</option>
+                <option value="low-high">Price: Low to High</option>
+                <option value="high-low">Price: High to Low</option>
+            </select>
+        </div>
+        <div class="footer-right">
+            <div id="cartStatus" class="cart-status">🛒 Items in Cart: 0</div>
+            <button id="clearCartBtn" class="btn-clear">Clear Cart</button>
+        </div>
+    </footer>
+
+    <div id="productModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
