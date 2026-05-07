@@ -11,7 +11,7 @@
     --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-/* 2. DARK MODE (Activated by JS toggle) */
+/* 2. DARK MODE */
 body.dark-mode {
     --bg-color: #0d1117;
     --main-bg: #161b22;
@@ -39,7 +39,7 @@ body {
     min-height: 100vh;
 }
 
-/* 4. HEADER & FOOTER (Flexbox) */
+/* 4. HEADER & FOOTER */
 header, footer {
     background-color: var(--header-footer-bg);
     padding: 15px 30px;
@@ -79,20 +79,20 @@ main { flex: 1; padding: 30px; max-width: 1400px; margin: 0 auto; width: 100%; }
     justify-content: center;
 }
 
-/* 6. PRODUCT CARDS (UI Requirements) */
+/* 6. PRODUCT CARDS */
 .product-card {
     background: var(--card-bg);
-    border-radius: 12px; /* Requirement: Border Radius */
-    width: 300px; /* Requirement: 300px width */
+    border-radius: 12px;
+    width: 300px;
     height: 480px; 
     display: flex;
     flex-direction: column;
     padding: 20px;
-    box-shadow: var(--shadow-card); /* Requirement: Box Shadow */
+    box-shadow: var(--shadow-card);
 }
 
 .product-card:hover { 
-    transform: translateY(-5px); /* Requirement: Hover effect */
+    transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
 }
 
@@ -109,13 +109,39 @@ main { flex: 1; padding: 30px; max-width: 1400px; margin: 0 auto; width: 100%; }
 
 .product-description { font-size: 13px; color: var(--text-muted); height: 55px; overflow: hidden; }
 
-/* 7. BUTTONS */
+/* 7. UPDATED BUTTONS (Added pointing and clicking effects) */
 .card-buttons { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
 
-.btn { padding: 10px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-.btn:active { transform: scale(0.96); }
+.btn { 
+    padding: 10px; 
+    border: none; 
+    border-radius: 6px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: all 0.2s ease; /* Smooth transition for hover effects */
+}
+
+/* View More Pointing Effect */
 .btn-view { background: var(--primary-blue); color: white; }
+.btn-view:hover { 
+    background: #0056b3; /* Darker blue when pointing */
+    filter: brightness(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Add to Cart Pointing Effect */
 .btn-add { background: var(--success-green); color: white; }
+.btn-add:hover { 
+    background: #218838; /* Darker green when pointing */
+    filter: brightness(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* General Click Effect for all buttons */
+.btn:active { 
+    transform: scale(0.95); /* Shrinks slightly when clicked */
+    filter: brightness(0.9);
+}
 
 .footer-right { display: flex; align-items: center; gap: 15px; }
 .btn-clear { background: none; border: 1px solid var(--text-muted); color: var(--text-muted); padding: 5px 10px; border-radius: 4px; cursor: pointer; }
